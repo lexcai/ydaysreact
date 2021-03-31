@@ -5,6 +5,7 @@ import NotFound from './pages/NotFound';
 import About from './pages/About';
 import Login from './pages/Login';
 
+
 const App = () => {
   return (
     <BrowserRouter>
@@ -14,7 +15,9 @@ const App = () => {
       <Route path="/a-propos" exact component={About} />
       <Route component={NotFound} />
     </Switch>
+    
     </BrowserRouter>
+    
   );
 };
 
