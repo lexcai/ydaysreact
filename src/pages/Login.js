@@ -1,5 +1,6 @@
 import React from 'react';
 import Navigation from '../components/Navigation';
+import Logo from "../components/Logo";
 
 
 const Login = () => {
@@ -7,6 +8,8 @@ const Login = () => {
     return (
       <>
       <Navigation/>
+      <Logo/>
+
         <form>
           <h1>Create Account</h1>
     
