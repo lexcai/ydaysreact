@@ -2,36 +2,35 @@ import React from 'react';
 import Navigation from '../components/Navigation';
 import Logo from "../components/Logo";
 
+const useStateWithLocalStorage = localStorageKey => {
+  const [value, setValue] = React.useState(
+    localStorage.getItem(localStorageKey) || ''
+  );
+ 
+  React.useEffect(() => {
+    localStorage.setItem(localStorageKey, value);
+  }, [value]);
+ 
+  return [value, setValue];
+};
 
 const Login = () => {
-   
+  const [value, setValue] = useStateWithLocalStorage(
+    'myValueInLocalStorage'
+  );
+  const onChange = event => setValue(event.target.value);
+
     return (
       <>
       <Navigation/>
       <Logo/>
+    <div>
+     <h1>Entrez votre nom d'utilisateur</h1>
 
-        <form>
-          <h1>Create Account</h1>
-    
-          <label>
-            Email:
-            <input
-              name="email"
-              type="email"
-              required />
-          </label>
-          
-          <label>
-            Password:
-            <input
-              name="password"
-              type="password"
-              required />
-          </label>
+     <input value={value} type="text" placeholder="Nom d'utilisateur" onChange={onChange} />
 
-      <button>Submit</button>
-    </form>
-    </>
+   </div>    
+   </>
   );
 };
 
